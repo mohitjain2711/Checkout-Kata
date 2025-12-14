@@ -27,7 +27,7 @@ namespace MarketCheckoutTest
         }
 
         [Fact]
-        public void GetTotalPrice_NoItems_ReturnsZero()
+        public void GetTotalPrice_NoScans_ReturnsZero()
         {
             var total = _checkout.GetTotalPrice();
 
@@ -35,7 +35,7 @@ namespace MarketCheckoutTest
         }
 
         [Fact]
-        public void Scan_SingleItem_NoSpecial_ReturnsUnitPrice()
+        public void Scan_SingleItem_NoSpecial()
         {
             _checkout.Scan("C");
 
@@ -43,7 +43,7 @@ namespace MarketCheckoutTest
         }
 
         [Fact]
-        public void Scan_ThreeAs_AppliesSpecialPrice()
+        public void Scan_ThreeAs_AppliesSpecialPricing()
         {
             _checkout.Scan("A");
             _checkout.Scan("A");
@@ -53,7 +53,7 @@ namespace MarketCheckoutTest
         }
 
         [Fact]
-        public void Scan_SixAs_AppliesSpecialPriceTwice()
+        public void Scan_SixAs_AppliesSpecialPricingTwice()
         {
             for (int i = 0; i < 6; i++)
                 _checkout.Scan("A");
@@ -62,7 +62,7 @@ namespace MarketCheckoutTest
         }
 
         [Fact]
-        public void Scan_MixedItems_AnyOrder_AppliesCorrectPricing()
+        public void Scan_MixedItems_AnyOrder()
         {
             _checkout.Scan("B");
             _checkout.Scan("A");
@@ -72,7 +72,7 @@ namespace MarketCheckoutTest
         }
 
         [Fact]
-        public void Scan_AllItems_Combination_ReturnsCorrectTotal()
+        public void Scan_AllItems_Combinations()
         {
             _checkout.Scan("A");
             _checkout.Scan("B");
